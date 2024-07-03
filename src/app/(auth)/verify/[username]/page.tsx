@@ -74,8 +74,8 @@ const VerifyAccount = () => {
               )}
           />
           <Button type="submit" >
-              Submit
-            </Button>
+            Submit
+          </Button>
           </form>
         </Form>  
       </div>
