@@ -19,7 +19,8 @@ const Navbar = () =>{
             <div className='container mx-auto flex flex-col md:flex-row justify-between items-center'>
                 <a className='text-xl font-bold md-4 md:mb-0' href="#">Ghost Feedbacks</a>
                 {
-                    session ? (
+                    session ? 
+                    (
                         <>
                         <span>Welcome, {user?.username || user?.email}</span>
                         <button className='w-full md:w-auto' onClick={()=> signOut()} >Logout</button>

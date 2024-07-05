@@ -23,6 +23,7 @@ import { Message } from "@/model/User";
 import { useToast } from "./ui/use-toast";
 import { ApiResponse } from "@/types/ApiResponses";
 import axios from "axios";
+import { X } from "lucide-react";
   
 
 type MessageCardProps = {
@@ -44,10 +45,10 @@ const MessageCard = ({message, onMessageDelete}:MessageCardProps) => {
             <CardTitle>Card Title</CardTitle>
 
             <AlertDialog>
-                <AlertDialogTrigger>Open</AlertDialogTrigger>
+                <AlertDialogTrigger><X/></AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogTitle>Sure want to delete this message permanently?</AlertDialogTitle>
                     <AlertDialogDescription>
                         This action cannot be undone. This will permanently delete your account
                         and remove your data from our servers.
@@ -55,7 +56,7 @@ const MessageCard = ({message, onMessageDelete}:MessageCardProps) => {
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction>Continue</AlertDialogAction>
+                    <AlertDialogAction>Delete</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
