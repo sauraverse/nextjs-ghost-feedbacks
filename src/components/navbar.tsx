@@ -4,8 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import {useSession, signOut} from 'next-auth/react'
 import { User } from 'next-auth'
-
-import { link } from 'fs'
+import { Button } from './ui/button'
 
 const Navbar = () =>{
 
@@ -23,7 +22,7 @@ const Navbar = () =>{
                     (
                         <>
                         <span>Welcome, {user?.username || user?.email}</span>
-                        <button className='w-full md:w-auto' onClick={()=> signOut()} >Logout</button>
+                        <Button className='w-full md:w-auto' onClick={()=> signOut()} >Logout</Button>
                         </>
                     ) : (
                         <Link href='/sign-in'>

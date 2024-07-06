@@ -22,21 +22,37 @@ import {
 import { Message } from "@/model/User";
 import { useToast } from "./ui/use-toast";
 import { ApiResponse } from "@/types/ApiResponses";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { X } from "lucide-react";
+import { Button } from "./ui/button";
+import { Key } from "react";
   
 
 type MessageCardProps = {
     message: Message;
-    onMessageDelete: (messageId: string) => void
+    onMessageDelete: (messageId: any) => void;
 }  
 const MessageCard = ({message, onMessageDelete}:MessageCardProps) => {
     const {toast} = useToast()
     const handleDeleteConfirm = async ()=> {
-        const response = await axios.delete<ApiResponse>(`/api/delete-message/${message._id}`)
-        toast({
-            title: response.data.message
-        })
+        try {
+            const response = await axios.delete<ApiResponse>(
+              `/api/delete-message/${message._id}`
+            );
+            toast({
+              title: response.data.message,
+            });
+            onMessageDelete(message._id);
+      
+          } catch (error) {
+            const axiosError = error as AxiosError<ApiResponse>;
+            toast({
+              title: 'Error',
+              description:
+                axiosError.response?.data.message ?? 'Failed to delete message',
+              variant: 'destructive',
+            });
+          } 
         
     }
   return (
@@ -45,7 +61,9 @@ const MessageCard = ({message, onMessageDelete}:MessageCardProps) => {
             <CardTitle>Card Title</CardTitle>
 
             <AlertDialog>
-                <AlertDialogTrigger><X/></AlertDialogTrigger>
+                <AlertDialogTrigger asChild>
+                    <Button variant='destructive'><X className="w-5 h-5"/></Button>
+                </AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
                     <AlertDialogTitle>Sure want to delete this message permanently?</AlertDialogTitle>
@@ -56,7 +74,7 @@ const MessageCard = ({message, onMessageDelete}:MessageCardProps) => {
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction>Delete</AlertDialogAction>
+                    <AlertDialogAction onClick={handleDeleteConfirm}>Delete</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>

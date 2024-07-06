@@ -32,7 +32,7 @@ export async function DELETE(request:Request, {params}:{params: {messageid: stri
         }
         return Response.json({
             success: true,
-            message: "Message Deleted successfully"
+            message: "Message deleted successfully"
         }, {status: 200})
     } catch (error) {
         console.log("Error deleting message", error)
