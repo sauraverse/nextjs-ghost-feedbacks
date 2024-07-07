@@ -145,9 +145,10 @@ const Dashboard = () => {
           />
           <Button onClick={copyToClipboard}>Copy</Button>
         </div>
+          <p className="ml-3 text-sm italic text-slate-500 mb-5">Want more secret messages? Share this link with friends to get some!</p>
       </div>
 
-      <div className="mb-4">
+      <div className="mb-4 mt-5">
         <Switch
           {...register('acceptMessages')}
           checked={acceptMessages}
@@ -184,7 +185,7 @@ const Dashboard = () => {
             />
           ))
         ) : (
-          <p>No messages to display.</p>
+          <p>No messages to display. Share your link with friends to get some!</p>
         )}
       </div>
     </div>
