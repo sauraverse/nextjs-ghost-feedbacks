@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button"
 import { signIn } from "next-auth/react"
 import { ExternalLink } from "lucide-react"
 
-const page = () => {
+const SignIn = () => {
    
   const {toast} = useToast();
   const router = useRouter();
@@ -112,4 +112,4 @@ const page = () => {
   )
 }
 
-export default page
+export default SignIn
