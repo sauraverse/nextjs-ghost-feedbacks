@@ -3,18 +3,14 @@ import {zodResolver} from "@hookform/resolvers/zod"
 import {useForm} from "react-hook-form"
 import * as z from "zod"
 import Link from "next/link"
-import { useEffect, useState } from "react"
-import { useDebounceCallback, useDebounceValue} from "usehooks-ts"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 import { signInSchema } from "@/schemas/signInSchema"
-import axios, { AxiosError } from "axios"
-import { ApiResponse } from "@/types/ApiResponses"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Loader2 } from "lucide-react"
 import { signIn } from "next-auth/react"
+import { ExternalLink } from "lucide-react"
 
 const page = () => {
    
@@ -108,7 +104,7 @@ const page = () => {
         </Form>
         <div className="text-center mt-4">
           <p>
-            Not registered yet? Create new Account{' '} <Link href='/sign-up' className="text-blue-600 hover:text-blue-800"> Sign Up</Link>
+            Not registered yet? {' '} <Link href='/sign-up' className="text-blue-600 hover:text-blue-800 underline"> Create new Account</Link>
           </p>
         </div>
       </div>

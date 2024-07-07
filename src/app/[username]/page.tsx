@@ -135,16 +135,17 @@ export default function SendMessage() {
           </div>
         </form>
       </Form>
-
+      <Separator className="my-9 " />
       <div className="space-y-4 my-8">
         <div className="space-y-2">
-          <Button
+          {/* <Button
             onClick={fetchSuggestedMessages}
-            className="my-4"
+            className="my-4 justify-center"
             disabled={isSuggestLoading}
           >
             Suggest Messages
-          </Button>
+          </Button> */}
+          <h1 className="text-2xl font-bold mb-6 text-center" >Want some Suggestions to send message</h1>
           <p>Click on any message below to select it.</p>
         </div>
         <Card>

@@ -47,21 +47,23 @@ const dashboard = () => {
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>
       toast({
-        title: "Error",
+        title: "Error accepting messages",
         description: axiosError.response?.data.message || 'Failed to fetch message settings', 
         variant: 'destructive' 
       })
     } finally{
       setIsSwitchLoading(false)
     }
-  },[setValue])
+  },[setValue, toast])
 
   const fetchMessages = useCallback(async (refresh: boolean = false)=>{
     setIsLoading(true)
     setIsSwitchLoading(false)
     try {
       const response = await axios.get<ApiResponse>('/api/get-messages')
-      setMessages(response.data.messages || [])
+      console.log(response);
+      
+      setMessages(response.data.message as any || [])
       if(refresh){
         toast({
           title: "Refreshed Messages",
@@ -72,7 +74,7 @@ const dashboard = () => {
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>;
       toast({
-        title: "Error",
+        title: "Error refreshing message",
         description: axiosError.response?.data.message || 'Failed to fetch message settings', 
         variant: 'destructive'
       })
@@ -81,13 +83,13 @@ const dashboard = () => {
       setIsLoading(false)
       setIsSwitchLoading(false)
     }
-  },[setIsLoading, setMessages])
+  },[setIsLoading, setMessages, toast])
 
   useEffect(()=>{
     if(!session || !session.user) return
     fetchMessages()
     fetchAcceptMessage()
-  }, [session, setValue, fetchAcceptMessage, fetchMessages])
+  }, [session, setValue, toast, fetchAcceptMessage, fetchMessages])
 
   //handle switch change
   const handleSwitchChange = async ()=>{
@@ -110,9 +112,13 @@ const dashboard = () => {
     }
   }
 
-  const {username} = session?.user as User
+  if(!session || !session.user) {
+    return <div>Please Login</div>
+  }
+
+  const {username} = session.user as User
   const baseUrl = `${window.location.protocol}//${window.location.host}`
-  const profileUrl = `${baseUrl}/u/${username}`
+  const profileUrl = `${baseUrl}/${username}`
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(profileUrl);
@@ -122,9 +128,6 @@ const dashboard = () => {
     })
   }
 
-  if(!session || !session.user) {
-    return <div>Please Login</div>
-  }
 
 
    return (
@@ -173,9 +176,9 @@ const dashboard = () => {
       </Button>
       <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
         {messages.length > 0 ? (
-          messages.map((message, index) => (
+          messages.map((message) => (
             <MessageCard
-              // key={message._id}
+              key={message._id as string}
               message={message}
               onMessageDelete={handleDeleteMessage}
             />

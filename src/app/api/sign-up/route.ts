@@ -37,6 +37,7 @@ export async function POST(request:Request) {
         }
         else{
             const hashedPassword = await bcrypt.hash(password, 10)
+            existingUserByEmail.username = username;
             existingUserByEmail.password = hashedPassword;
             existingUserByEmail.verifyCode = verifyCode
             existingUserByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000)
@@ -68,7 +69,7 @@ export async function POST(request:Request) {
        if(!emailResponse.success){
         return Response.json({
             success: false,
-            message: email.Response.message
+            message: emailResponse.message
         },{status: 500})
        }
        return Response.json({

@@ -11,7 +11,9 @@ import {
 import Autoplay from 'embla-carousel-autoplay'
 import messages from '@/messages.json'
 
+
 const Home = () => {
+  
   return (
     <>
     <main>

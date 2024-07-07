@@ -25,7 +25,7 @@ import { ApiResponse } from "@/types/ApiResponses";
 import axios, { AxiosError } from "axios";
 import { X } from "lucide-react";
 import { Button } from "./ui/button";
-import { Key } from "react";
+import dayjs from 'dayjs';
   
 
 type MessageCardProps = {
@@ -56,30 +56,34 @@ const MessageCard = ({message, onMessageDelete}:MessageCardProps) => {
         
     }
   return (
-    <Card>
+    <Card className="card-bordered">
         <CardHeader>
-            <CardTitle>Card Title</CardTitle>
+        <div className="flex justify-between items-center">
+            <CardTitle>{message.content}</CardTitle>
 
             <AlertDialog>
                 <AlertDialogTrigger asChild>
-                    <Button variant='destructive'><X className="w-5 h-5"/></Button>
+                    <Button variant='destructive'><X className="w-6 h-6"/></Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
                     <AlertDialogTitle>Sure want to delete this message permanently?</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete your account
-                        and remove your data from our servers.
+                        This action cannot be undone. This will permanently delete your message
+                        and remove from our servers.
                     </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={handleDeleteConfirm}>Delete</AlertDialogAction>
+                    <AlertDialogAction style={{ backgroundColor: 'red', color: 'white' }} onClick={handleDeleteConfirm}>Delete</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
-
-            <CardDescription>Card Description</CardDescription>
+        </div>
+        <div>
+          {dayjs(message.createdAt).format('MMM D, YYYY h:mm A')}
+        </div>
+            
         </CardHeader>
         
     </Card> 
