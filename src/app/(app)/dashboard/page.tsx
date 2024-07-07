@@ -3,6 +3,7 @@
 import MessageCard from "@/components/MessageCard"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
+import { Skeleton } from "@/components/ui/skeleton"
 import { Switch } from "@/components/ui/switch"
 import { useToast } from "@/components/ui/use-toast"
 import { Message} from "@/model/User"
@@ -113,7 +114,16 @@ const Dashboard = () => {
   }
 
   if(!session || !session.user) {
-    return <div>Please Login</div>
+
+    return (
+    <div className="flex flex-col items-center justify-center min-h-screen ">
+      <div className="space-y-3">
+      <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+        <Skeleton className="h-4 w-[250px]" />
+        <Skeleton className="h-4 w-[200px]" />
+      </div>
+    </div>
+  )
   }
 
   const {username} = session.user as User
