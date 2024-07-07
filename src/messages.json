@@ -1,17 +1,32 @@
 [
     {
-      "title": "Message from User123",
-      "content": "Hey, how are you doing today?",
+      "title": "Message from Cool_Dude",
+      "content": "Not sure what's brighter, my future or this ghost message. Spoiler alert: neither.",
       "received": "10 minutes ago"
     },
     {
       "title": "Message from SecretAdmirer",
-      "content": "I really liked your recent post!",
+      "content": "You've got this! I believe in you.🐣",
       "received": "2 hours ago"
     },
     {
       "title": "Message from MysteryGuest",
-      "content": "Do you have any book recommendations?",
+      "content": "Heyy want to who am I?",
       "received": "1 day ago"
+    },
+    {
+      "title": "Message from Angel_Priya",
+      "content": "Going through a tough time? Sending you virtual hugs.",
+      "received": "5 day ago"
+    },
+    {
+      "title": "Message from Incognito_Lover",
+      "content": "Gali me aaj chaand nikla🎶",
+      "received": "10 day ago"
+    },
+    {
+      "title": "Message from User123",
+      "content": "They say laughter is best medicine, have you tried ignoring your problems entirely?",
+      "received": "11 day ago"
     }
   ]

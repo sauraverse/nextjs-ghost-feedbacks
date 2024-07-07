@@ -10,7 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { signIn } from "next-auth/react"
-import { ExternalLink } from "lucide-react"
+
 
 const SignIn = () => {
    
@@ -54,11 +54,11 @@ const SignIn = () => {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100" >
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+    <div className="flex justify-center items-center min-h-screen bg-zinc-900" >
+      <div className="w-full max-w-md p-8 space-y-8 bg-zinc-950 text-white rounded-lg shadow-md">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
-            Continue Ghost Feedbacks
+            Continue Ghost Messages
           </h1>
           <p className="mb-4">Sign-in to continue your anonymous journey👻</p>
         </div>
@@ -72,7 +72,7 @@ const SignIn = () => {
                 <FormItem>
                   <FormLabel>Email/Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="email/username"
+                    <Input placeholder="email/username" className="bg-zinc-900"
                       {...field} 
                     />
                   </FormControl>
@@ -88,7 +88,7 @@ const SignIn = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="password"
+                    <Input type="password" placeholder="password" className="bg-zinc-900"
                       {...field}                      
                     />
                   </FormControl>
@@ -97,7 +97,7 @@ const SignIn = () => {
               )}
             />
 
-            <Button type="submit">
+            <Button type="submit" className="bg-slate-100 text-black text-md hover:bg-slate-200">
              Login
             </Button>
           </form>

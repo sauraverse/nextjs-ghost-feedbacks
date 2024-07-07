@@ -98,9 +98,10 @@ export default function SendMessage() {
   };
 
   return (
-    <div className="container mx-auto my-8 p-6 bg-white rounded max-w-4xl">
+    <div className="flex justify-center items-center min-h-screen bg-zinc-900">
+    <div className="container mx-auto my-8 p-6 bg-zinc-900 text-white rounded max-w-4xl">
       <h1 className="text-4xl font-bold mb-6 text-center">
-        Public Profile Link
+        <Link href='/'>👻Ghost Messages</Link>
       </h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -113,7 +114,7 @@ export default function SendMessage() {
                 <FormControl>
                   <Textarea
                     placeholder="Write your anonymous message here"
-                    className="resize-none"
+                    className="resize-none bg-zinc-800"
                     {...field}
                   />
                 </FormControl>
@@ -123,19 +124,19 @@ export default function SendMessage() {
           />
           <div className="flex justify-center">
             {isLoading ? (
-              <Button disabled>
+              <Button disabled className="bg-slate-100 text-black text-md hover:bg-slate-200">
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 Please wait
               </Button>
             ) : (
-              <Button type="submit" disabled={isLoading || !messageContent}>
+              <Button type="submit" disabled={isLoading || !messageContent} className="bg-slate-100 text-black text-md hover:bg-slate-200">
                 Send It
               </Button>
             )}
           </div>
         </form>
       </Form>
-      <Separator className="my-9 " />
+      <Separator className="my-9 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
       <div className="space-y-4 my-8">
         <div className="space-y-2">
           {/* <Button
@@ -145,14 +146,14 @@ export default function SendMessage() {
           >
             Suggest Messages
           </Button> */}
-          <h1 className="text-2xl font-bold mb-6 text-center" >Want some Suggestions to send message</h1>
+          <h1 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text" >✨ Want some Suggestions to send message</h1>
           <p>Click on any message below to select it.</p>
         </div>
-        <Card>
+        <Card className='pb-1 bg-zinc-950 text-white border-purple-600'>
           <CardHeader>
             <h3 className="text-xl font-semibold">Messages</h3>
           </CardHeader>
-          <CardContent className="flex flex-col space-y-4">
+          <CardContent className="flex flex-col space-y-4 bg-zinc-950">
             {error ? (
               <p className="text-red-500">{error.message}</p>
             ) : (
@@ -160,7 +161,7 @@ export default function SendMessage() {
                 <Button
                   key={index}
                   variant="outline"
-                  className="mb-2"
+                  className="mb-2 bg-zinc-900"
                   onClick={() => handleMessageClick(message)}
                 >
                   {message}
@@ -170,13 +171,14 @@ export default function SendMessage() {
           </CardContent>
         </Card>
       </div>
-      <Separator className="my-6" />
+      <Separator className="my-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
       <div className="text-center">
         <div className="mb-4">Get Your Message Board</div>
         <Link href={'/sign-up'}>
-          <Button>Create Your Account</Button>
+          <Button className="bg-slate-100 text-black text-md hover:bg-slate-200">Create Your Account</Button>
         </Link>
       </div>
+    </div>
     </div>
   );
 }

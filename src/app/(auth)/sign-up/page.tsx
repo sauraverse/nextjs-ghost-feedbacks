@@ -81,16 +81,16 @@ const SignUp = () => {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100" >
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+    <div className="flex justify-center items-center min-h-screen bg-zinc-900" >
+      <div className="w-full max-w-md p-8 space-y-8 bg-zinc-950 text-white rounded-lg shadow-md">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
-            Join Ghost Feedbacks
+            Join Ghost Messages
           </h1>
-          <p className="mb-4">Sign-up to start your anonymous adventure👻</p>
+          <p className="mb-4">Sign-up to start your mysterious adventure👻</p>
         </div>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 ">
             <FormField
               name="username"
               control={form.control}
@@ -98,7 +98,7 @@ const SignUp = () => {
                 <FormItem>
                   <FormLabel>Username</FormLabel>
                   <FormControl>
-                    <Input type="text" placeholder="username"
+                    <Input type="text" placeholder="username" className="bg-zinc-900" autoComplete="off"
                       {...field}
                       onChange={(e)=>{
                         field.onChange(e)
@@ -120,7 +120,7 @@ const SignUp = () => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="email"
+                    <Input placeholder="email" className="bg-zinc-900" autoComplete="off"
                       {...field} 
                     />
                   </FormControl>
@@ -136,7 +136,7 @@ const SignUp = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="password"
+                    <Input type="password" placeholder="password" className="bg-zinc-900" autoComplete="off"
                       {...field}                      
                     />
                   </FormControl>
@@ -145,7 +145,7 @@ const SignUp = () => {
               )}
             />
 
-            <Button type="submit" disabled={isSubmitting} >
+            <Button type="submit" disabled={isSubmitting} className="bg-slate-100 text-black text-lg hover:bg-slate-200">
               {
                 isSubmitting? (
                 <>

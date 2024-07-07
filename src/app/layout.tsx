@@ -8,8 +8,8 @@ import Navbar from "@/components/navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ghost Feedbacks",
-  description: "Makes the anonymous guy message you.",
+  title: "Ghost Feedback",
+  description: "Makes the anonymous guy message you. Seeing how others think of you? It's a fun guessing game!",
 };
 
 export default function RootLayout({
@@ -21,7 +21,6 @@ export default function RootLayout({
     <html lang="en">
       <AuthProvider>
       <body className={inter.className}>
-        <Navbar/>
         {children}  
         <Toaster />
       </body>
