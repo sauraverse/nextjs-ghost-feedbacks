@@ -13,12 +13,12 @@ function Navbar() {
   return (
     <nav className="p-4 md:p-6 shadow-md bg-zinc-950 text-white">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        <a href="#" className="text-2xl font-bold mb-4 md:mb-0">
+        <a href="#" className="text-3xl font-bold mb-4 md:mb-0">
           👻Ghost Messages
         </a>
         {session ? (
           <>
-            <span className="mr-4">
+            <span className="mr-4 text-lg font-bold">
               Welcome, {user.username || user.email}
             </span>
             <Button onClick={() => signOut()} className="w-full md:w-auto bg-slate-100 text-black text-md" variant='outline'>

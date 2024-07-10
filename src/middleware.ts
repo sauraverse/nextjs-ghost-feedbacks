@@ -26,6 +26,7 @@ export async function middleware(request: NextRequest) {
  
 // See "Matching Paths" below to learn more
 export const config = {
+  secret: process.env.NEXTAUTH_SECRET,
   matcher: [
     '/sign-in/:path*',
     '/sign-up',

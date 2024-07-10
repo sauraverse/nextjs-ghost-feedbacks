@@ -62,7 +62,6 @@ const Dashboard = () => {
     setIsSwitchLoading(false)
     try {
       const response = await axios.get<ApiResponse>('/api/get-messages')
-      console.log(response);
       
       setMessages(response.data.message as any || [])
       if(refresh){
@@ -116,7 +115,7 @@ const Dashboard = () => {
   if(!session || !session.user) {
 
     return (
-    <div className="flex flex-col items-center justify-center min-h-screen ">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-600">
       <div className="space-y-3">
       <Skeleton className="h-[125px] w-[250px] rounded-xl" />
         <Skeleton className="h-4 w-[250px]" />
@@ -141,7 +140,8 @@ const Dashboard = () => {
 
 
    return (
-    <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-zinc-900 text-white rounded w-full max-w-6xl">
+    <div className="bg-zinc-700">
+    <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-zinc-700 text-white rounded w-full max-w-6xl">
       <h1 className="text-4xl font-bold mb-4">User Dashboard</h1>
 
       <div className="mb-4">
@@ -151,11 +151,11 @@ const Dashboard = () => {
             type="text"
             value={profileUrl}
             disabled
-            className="input input-bordered w-full p-2 mr-2"
+            className="input input-bordered rounded w-full p-2 mr-2"
           />
-          <Button onClick={copyToClipboard}>Copy</Button>
+          <Button onClick={copyToClipboard} className="bg-slate-100 text-black text-md hover:bg-slate-200">Copy</Button>
         </div>
-          <p className="ml-3 text-sm italic text-slate-500 mb-5">Want more secret messages? Share this link with friends to get some!</p>
+          <p className="ml-1 text-sm italic text-slate-300 mb-5">Want more secret messages? Share this link with friends to get some!</p>
       </div>
 
       <div className="mb-4 mt-5">
@@ -172,7 +172,7 @@ const Dashboard = () => {
       <Separator />
 
       <Button
-        className="mt-4"
+        className="mt-4 bg-slate-100 text-black"
         variant="outline"
         onClick={(e) => {
           e.preventDefault();
@@ -198,6 +198,7 @@ const Dashboard = () => {
           <p>No messages to display. Share your link with friends to get some!</p>
         )}
       </div>
+    </div>
     </div>
   );
 }
