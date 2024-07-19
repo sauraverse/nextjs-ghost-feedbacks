@@ -30,7 +30,7 @@ export default function Home() {
           </p> 
           <div className='mt-5'>
             <Link href='/sign-up'>
-            <Button className="w-full md:w-auto bg-slate-100 text-black text-lg ring-4 border-0 rounded ring-purple-600 hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:text-white" variant={'outline'}>Sign Up</Button>
+            <Button className="w-full md:w-auto text-lg ring-4 border-0 rounded ring-purple-600 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white" variant={'outline'}>Sign Up</Button>
             </Link>
             <p className="mt-1 md:mt-4 text-gray-400 md:text-md">
               Get onboard! Start receiving your messages
