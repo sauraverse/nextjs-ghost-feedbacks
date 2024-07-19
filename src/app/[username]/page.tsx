@@ -27,41 +27,19 @@ import { useParams } from 'next/navigation';
 import { messageSchema } from '@/schemas/messageSchema';
 import { ApiResponse } from '@/types/ApiResponses';
 
-const specialChar = '||';
-
-const parseStringMessages = (messageString: string): string[] => {
-  return messageString.split(specialChar);
-};
-
-const initialMessageString =
-  "What's your favorite movie?||Do you have any pets?||What's your dream job?";
 
 export default function SendMessage() {
   const params = useParams<{ username: string }>();
   const username = params.username;
-
-  const {
-    complete,
-    completion,
-    isLoading: isSuggestLoading,
-    error,
-  } = useCompletion({
-    api: '/api/suggest-messages',
-    initialCompletion: initialMessageString,
-  });
-
+  
   const form = useForm<z.infer<typeof messageSchema>>({
     resolver: zodResolver(messageSchema),
   });
-
+  
   const messageContent = form.watch('content');
-
-  const handleMessageClick = (message: string) => {
-    form.setValue('content', message);
-  };
-
+  
   const [isLoading, setIsLoading] = useState(false);
-
+  
   const onSubmit = async (data: z.infer<typeof messageSchema>) => {
     setIsLoading(true);
     try {
@@ -69,7 +47,7 @@ export default function SendMessage() {
         ...data,
         username,
       });
-
+      
       toast({
         title: response.data.message,
         variant: 'default',
@@ -87,17 +65,57 @@ export default function SendMessage() {
       setIsLoading(false);
     }
   };
+  
+  const specialChar = '||';
+  
+  const parseStringMessages = (messageString: string): string[] => {
+    if (!messageString.includes(specialChar)) {
+      return [messageString];
+    }
+    return messageString.split(specialChar);
+  };
+  
+  const initialMessageString =
+    "Thanks for being the vodka to my cranberry juice. We make a killer team... for forgetting bad decisions.||You're basically a walking, talking anti-depressant💊💉. Thanks for keeping me from spontaneously blasting💥.||Pretty sure my coffee is stronger than your will to live today. ☕️";
+  const [completion, setCompletion] = useState(initialMessageString)
+  
+  //   const {
+  //   complete,
+  //   completion,
+  //   isLoading: isSuggestLoading,
+  //   error
+  // } = useCompletion({
+  //   api: '/api/suggest-messages',
+  //   initialCompletion: initialMessageString,
+  // });
 
   const fetchSuggestedMessages = async () => {
+    setIsLoading(true)
     try {
-      complete('');
+      const response = await fetch('/api/suggest-messages', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
+      if(!response.ok){
+        setCompletion(initialMessageString)
+      }
+      const json = await response.json()
+      setCompletion(json)
     } catch (error) {
       console.error('Error fetching messages:', error);
-      // Handle error appropriately
+    } finally{
+      setIsLoading(false)
     }
   };
 
+  const handleMessageClick = (message: string) => {
+    form.setValue('content', message);
+  };
+
   return (
+    <>
     <div className="flex justify-center items-center min-h-screen bg-zinc-900">
     <div className="container mx-auto my-8 p-6 bg-zinc-900 text-white rounded max-w-4xl">
       <h1 className="text-4xl font-bold mb-6 text-center">
@@ -138,25 +156,23 @@ export default function SendMessage() {
       </Form>
       <Separator className="my-9 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
       <div className="space-y-4 my-8">
-        <div className="space-y-2">
-          {/* <Button
+        <div className="space-y-2 text-center mb-10">
+          <h1 className="text-2xl font-bold mb-6  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text" >✨ Ask AI for some Suggestions</h1>
+          <Button
             onClick={fetchSuggestedMessages}
-            className="my-4 justify-center"
-            disabled={isSuggestLoading}
+            className="w-full md:w-auto bg-slate-100 text-black text-lg ring-4 border-0 rounded ring-purple-600 hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:text-white" variant={'outline'}
+            disabled={isLoading}
           >
-            Suggest Messages
-          </Button> */}
-          <h1 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text" >✨ Want some Suggestions to send message</h1>
-          <p>Click on any message below to select it.</p>
+            ✨ Generate more Suggestions
+          </Button>
         </div>
+        <p className="ml-1 text-md italic text-slate-300 ">Click on any message below to select it.</p>
         <Card className='pb-1 bg-zinc-950 text-white border-purple-600'>
           <CardHeader>
             <h3 className="text-xl font-semibold">Messages</h3>
           </CardHeader>
           <CardContent className="flex flex-col space-y-4 bg-zinc-950">
-            {error ? (
-              <p className="text-red-500">{error.message}</p>
-            ) : (
+            {
               parseStringMessages(completion).map((message, index) => (
                 <Button
                   key={index}
@@ -167,7 +183,7 @@ export default function SendMessage() {
                   {message}
                 </Button>
               ))
-            )}
+            }
           </CardContent>
         </Card>
       </div>
@@ -180,5 +196,9 @@ export default function SendMessage() {
       </div>
     </div>
     </div>
+    <footer className="text-center p-2 md:p-6 bg-zinc-950 text-white">
+    © 2024 Ghost Messages. <br />Visit developer @<span className='underline'>sauraverse</span>
+  </footer>
+    </>
   );
 }

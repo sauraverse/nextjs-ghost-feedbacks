@@ -38,7 +38,7 @@ export async function GET(request:Request) {
         if(!userWithMessages || userWithMessages.length === 0){
 
             const user = await UserModel.findById(userId);
-            const defaultMessage = {content:"Welcome onboard! While the sender's identity here always remains a mystery, I'm developer. Sorry for revealing😜", createdAt: new Date()}
+            const defaultMessage = {content:"Welcome onboard! While the sender's identity here always remains a mystery, I'm developer of this! Sorry for revealing😜", createdAt: new Date()}
             user?.messages.push(defaultMessage as Message);
             await user?.save();
 
