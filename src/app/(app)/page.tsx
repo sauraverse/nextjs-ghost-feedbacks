@@ -30,9 +30,9 @@ export default function Home() {
           </p> 
           <div className='mt-5'>
             <Link href='/sign-up'>
-            <Button className="w-full md:w-auto text-lg ring-4 border-0 rounded ring-purple-600 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white" variant={'outline'}>Sign Up</Button>
+            <Button className=" text-lg ring-4 border-0 rounded ring-purple-600 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white" variant={'outline'}>Sign Up</Button>
             </Link>
-            <p className="mt-1 md:mt-4 text-gray-400 md:text-md">
+            <p className="mt-2 md:mt-4 text-gray-400 md:text-md">
               Get onboard! Start receiving your messages
             </p>
           </div>
@@ -70,7 +70,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="text-center p-2 md:p-6 bg-zinc-950 text-white">
-        © 2024 Ghost Messages. <br />Visit developer @<span className='underline'>sauraverse</span>
+        © 2024 Ghost Messages. <br />Visit developer <a href="https://sauraverse.com" target='_blank'>@<span className='underline'>sauraverse</span></a>
       </footer>
     </>
   );

@@ -11,7 +11,7 @@ export async function sendVerificationEmail(
 ): Promise<ApiResponse> {
     try {
         await resend.emails.send({
-            from: 'onboarding@resend.dev',
+            from: 'hello@sauraverse.com',
             to: email,
             subject: 'Ghost Feedbacks: Verification code',
             react: VerificationEmail({username, otp:verifyCode}),

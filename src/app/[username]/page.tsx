@@ -118,7 +118,7 @@ export default function SendMessage() {
     <>
     <div className="flex justify-center items-center min-h-screen bg-zinc-900">
     <div className="container mx-auto my-8 p-6 bg-zinc-900 text-white rounded max-w-4xl">
-      <h1 className="text-4xl font-bold mb-6 text-center">
+      <h1 className="text-4xl font-black mb-6 text-center">
         <Link href='/'>👻Ghost Messages</Link>
       </h1>
       <Form {...form}>
@@ -177,10 +177,10 @@ export default function SendMessage() {
                 <Button
                   key={index}
                   variant="outline"
-                  className="mb-2 bg-zinc-900"
+                  className="mb-2 bg-zinc-900 text-left break-words flex items-center p-2 h-20 overflow-auto"
                   onClick={() => handleMessageClick(message)}
                 >
-                  {message}
+                  <div className="whitespace-normal break-words">{message}</div>
                 </Button>
               ))
             }
@@ -197,7 +197,7 @@ export default function SendMessage() {
     </div>
     </div>
     <footer className="text-center p-2 md:p-6 bg-zinc-950 text-white">
-    © 2024 Ghost Messages. <br />Visit developer @<span className='underline'>sauraverse</span>
+    © 2024 Ghost Messages. <br />Visit developer <a href="https://sauraverse.com" target='_blank'>@<span className='underline'>sauraverse</span></a>
   </footer>
     </>
   );
