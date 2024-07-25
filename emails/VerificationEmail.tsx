@@ -38,26 +38,38 @@ import {
           </Row>
           <Row>
             <Text>
-              Thank you for registering. Please use the following verification
-              code to complete your registration:
+              Thank you for registering with Ghost Messages. <br />
+              Please use the following verification code to complete your registration:
             </Text>
           </Row>
           <Row>
-            <Text>{otp}</Text> 
-          </Row>
-          <Row>
-            <Text>
-              If you did not request this code, please ignore this email.
-            </Text>
+          <Heading as="h3">{otp}</Heading> 
           </Row>
           <Row>
             <Button
               href={`https://ghostmessages.sauraverse.com/verify/${username}`}
               style={{ color: '#61dafb' }}
             >
-              Verify here
+              <Heading as="h3">Verify here</Heading>
             </Button>
           </Row>
+          <Row>
+            <Text>
+            Thank you for joining us!
+            </Text>
+          </Row>
+          <Row>
+            <Text style={{color: "red"}}>
+            <i>Incase you see a <strong>White Screen</strong> after Logging in, just <strong>Refresh</strong> the page! And things will go normal. We're working on a fix.<br />Thanks for your patience in advance!!</i>
+            </Text>
+          </Row>
+          <Row>
+            <Text>
+            Best regards, <br />
+            The 👻Ghost Messages Team
+            </Text>
+          </Row>
+          
         </Section>
       </Html>
     );
