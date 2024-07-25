@@ -8,7 +8,7 @@ import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ghost Messages",
+  title: "Ghost Messages || Anonymous Messaging Platform",
   description: "Makes the anonymous guy message you. Seeing how others think of you? It's a fun guessing game!",
 };
 
@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}  
         <Toaster />
-        <Analytics mode={'production'} />;
+        <Analytics mode={'production'} />
       </body>
       </AuthProvider>
     </html>
