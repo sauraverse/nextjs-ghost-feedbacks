@@ -60,7 +60,7 @@ const SignIn = () => {
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
             Continue Ghost Messages
           </h1>
-          <p className="mb-4">Sign-in to continue your anonymous journey👻</p>
+          <p className="mb-4">Sign-in to continue your anonymous journey👻<br /><span className="text-yellow-500"><i>Incase you see a <strong>White Screen</strong> after Logging in, just <strong>Refresh</strong> the page! And things will go normal. We're working on a fix.<br />Thanks for your patience in advance!!</i></span></p>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

@@ -151,7 +151,7 @@ const Dashboard = () => {
             type="text"
             value={profileUrl}
             disabled
-            className="input input-bordered rounded w-full p-2 mr-2"
+            className="input input-bordered rounded w-full p-2 mr-2 text-white"
           />
           <Button onClick={copyToClipboard} className="bg-slate-100 text-black text-md hover:bg-slate-200">Copy</Button>
         </div>
