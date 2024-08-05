@@ -60,13 +60,13 @@ import {
           </Row>
           <Row>
             <Text style={{color: "red"}}>
-            <i>Incase you see a <strong>White Screen</strong> after Logging in, just <strong>Refresh</strong> the page! And things will go normal. We're working on a fix.<br />Thanks for your patience in advance!!</i>
+            <i>Verification code is only valid for <strong>30 minutes</strong>.</i>
             </Text>
           </Row>
           <Row>
             <Text>
             Best regards, <br />
-            The 👻Ghost Messages Team
+            The 👻Ghost Messages Developer
             </Text>
           </Row>
           
