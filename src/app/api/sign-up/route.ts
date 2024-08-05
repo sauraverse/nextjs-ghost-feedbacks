@@ -19,8 +19,8 @@ export async function POST(request:Request) {
         return Response.json(
             {
                 success: false,
-                message: "Username is already taken. Try different username.."
-            }, {status: 400}
+                message: "Username already exists. Try different username.."
+            }, {status: 409}
         )
        }
 
@@ -33,7 +33,7 @@ export async function POST(request:Request) {
             return Response.json({
                 success: false,
                 message: "User already exist with this email"
-            },{status: 400})
+            },{status: 409})
         }
         else{
             const hashedPassword = await bcrypt.hash(password, 10)

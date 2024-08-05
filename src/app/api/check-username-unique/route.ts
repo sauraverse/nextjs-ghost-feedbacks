@@ -39,7 +39,7 @@ export async function GET(request: Request){
             return Response.json({
                 success: false,
                 message: 'Username already exists. Try different '
-            }, {status: 400})
+            }, {status: 409})
         }else{
             return Response.json({
                 success: true,

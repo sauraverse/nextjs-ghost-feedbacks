@@ -71,7 +71,7 @@ const SignUp = () => {
       const axiosError = error as AxiosError<ApiResponse>;
       let errorMessage = axiosError.response?.data.message
       toast({
-        title: 'Signup failed',
+        title: 'Signup failed: Email already exists. Try with different email',
         description: errorMessage,
         variant: 'destructive'
       })
